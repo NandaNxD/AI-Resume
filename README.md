@@ -1,8 +1,8 @@
-##AI Resume 
+#AI Resume 
 
 Build Tailored Resume for every job using AI Resume!
 
-# React + Vite
+React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
