@@ -1,6 +1,6 @@
 let API_URL='https://welcome-opalina-nodeproxy.koyeb.app'
 
-const environment='dev'
+const environment='prod'
 
 if(environment==='dev'){
     API_URL='http://localhost:3000'
