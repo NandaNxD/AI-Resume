@@ -9,6 +9,8 @@ const Body = () => {
 
   const [fileUploadProgress, setFileUploadProgress] = useState(0);
 
+  const [skillsList,setSkillsList]=useState([]);
+
   const [resumeText, setResumeText] = useState("");
 
   const [dropZoneText, setDropZoneText] = useState("Upload +");
@@ -105,8 +107,11 @@ const Body = () => {
         },
       })
       .then((response) => {
+      
+        setResumeText(response.data?.resume || '');
+        setSkillsList(response.data?.keywords || []);
         setLoading(false);
-        setResumeText(response.data);
+
       })
       .catch((err) => {
         setLoading(false);
@@ -173,9 +178,26 @@ const Body = () => {
       )}
 
       {resumeText && !loading && (
-        <div className="px-10 w-full">
-          <textarea value={resumeText} className="w-full px-2 h-60 border-black border-2 rounded-lg"></textarea>
+        <div className="w-full flex px-2 gap-4 h-72 justify-center">
+
+            <div className="w-[70%] shadow-lg">
+                <span className="font-bold text-xl">Resume Text</span>
+                <div contentEditable className="w-full px-2 border-black border-2 h-[90%] rounded-lg whitespace-pre-wrap overflow-auto">{resumeText}</div>
+            </div>
+
+            <div className="shadow-lg rounded-lg">
+                <span className="font-bold text-xl text-center">Skills</span>
+                <ol className=" h-[90%] overflow-auto p-2 border-black rounded-lg border-2">
+                    {
+                        skillsList.map((skill,index)=>{
+                            return <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">{index+1+'.   '}{skill}</li>
+                        })
+                    }
+                </ol>
+            </div>
+            
         </div>
+        
       )}
     </div>
   );
