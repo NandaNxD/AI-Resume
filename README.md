@@ -1,4 +1,4 @@
-#AI Resume 
+# AI Resume 
 
 Build Tailored Resume for every job using AI Resume!
 
